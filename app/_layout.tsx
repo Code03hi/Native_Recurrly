@@ -2,6 +2,7 @@ import { SplashScreen, Stack } from "expo-router";
 import "@/global.css"
 import {useFonts} from "expo-font"
 import { useEffect } from "react";
+import { Text, View } from "react-native";
 
 export default function RootLayout() {
 
@@ -22,5 +23,8 @@ export default function RootLayout() {
 
   if(fontsLoaded) return null
 
-  return <Stack screenOptions={{ headerShown: false }} />;
+  return <View>
+    <Text>Hello Bhagwan Jha</Text>
+  </View>
+  // return <Stack screenOptions={{ headerShown: false }} />;
 }
