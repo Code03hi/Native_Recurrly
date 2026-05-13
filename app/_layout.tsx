@@ -1,30 +1,27 @@
 import { SplashScreen, Stack } from "expo-router";
-import "@/global.css"
-import {useFonts} from "expo-font"
+import "@/global.css";
+import { useFonts } from "expo-font";
 import { useEffect } from "react";
-import { Text, View } from "react-native";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-
   const [fontsLoaded] = useFonts({
-    'sans-regular': require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
-    'sans-bold': require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
-    'sans-medium': require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
-    'sans-semibold': require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
-    'sans-extrabold': require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
-    'sans-light': require("../assets/fonts/PlusJakartaSans-Light.ttf"),
-  })
+    "sans-regular": require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
+    "sans-bold": require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
+    "sans-medium": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
+    "sans-semibold": require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
+    "sans-extrabold": require("../assets/fonts/PlusJakartaSans-ExtraBold.ttf"),
+    "sans-light": require("../assets/fonts/PlusJakartaSans-Light.ttf"),
+  });
 
   useEffect(() => {
-    if(fontsLoaded) {
-      SplashScreen.hideAsync()
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
     }
-  },[fontsLoaded])
+  }, [fontsLoaded]);
 
-  if(fontsLoaded) return null
+  if (!fontsLoaded) return null;
 
-  return <View>
-    <Text>Hello Bhagwan Jha</Text>
-  </View>
-  // return <Stack screenOptions={{ headerShown: false }} />;
+  return <Stack screenOptions={{ headerShown: false }} />;
 }
