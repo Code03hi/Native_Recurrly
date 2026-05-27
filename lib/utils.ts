@@ -10,8 +10,8 @@ export const formatCurrency = (value: number,currency: string = "USD") => {
         }).format(value)
     } catch (error) {
         console.log(error)
-        const formttedValue = value.toFixed(2);
-        return `$${formttedValue}`
+        // const formttedValue = value.toFixed(2);
+        return value.toFixed(2)
     }
 }
 

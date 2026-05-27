@@ -1,5 +1,7 @@
+/* eslint-disable import/first */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import "@/global.css"
-import { FlatList, Image, Text, View } from "react-native";
+import { FlatList, Image, Text, View , Pressable, StyleSheet} from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 import {styled} from 'nativewind'
 import images from "@/constants/images";
@@ -12,14 +14,19 @@ import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
 import SubscriptionCard from "@/components/SubscriptionCard";
 import { useState } from "react";
 const SafeAreaView = styled(RNSafeAreaView)
+import { Show, useUser, useClerk } from '@clerk/expo'
+import { Link } from 'expo-router'
 
 export default function App() {
+
+  const { user } = useUser()
+  const { signOut } = useClerk()
 
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<string | null>(null)
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
-
+      <Text>Hello</Text>
         <FlatList ListHeaderComponent={() => (
           <>
 
@@ -53,7 +60,7 @@ export default function App() {
 
             </View>
 
-          <ListHeading title="All Subscription" />
+          <ListHeading title="All Subscriptions" />
           </>
         )} data={HOME_SUBSCRIPTIONS} keyExtractor={(item) => item.id} renderItem={({item}) => (
           <SubscriptionCard {...item} 
